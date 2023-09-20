@@ -9,6 +9,7 @@ import (
     "basics/lib/submod2"
     "basics/lib/functions"
     "basics/lib/players"
+    "basics/lib/animals"
 )
 
 /* you can also import like this:
@@ -113,6 +114,9 @@ func main() {
     }
     // note that the types are specified after the field names
 
+    // NOTE:
+    // I'm going to use the struct from the players module for the rest of this section
+
     // create a struct (the source is in lib/player/player.go)
     somePlayer := players.Player{Name: "Marty", Age: 17}
 
@@ -148,7 +152,7 @@ func main() {
     // methods on types
 
     // The reason this is relevant tp structs is because we need to pass a pointer to the struct,
-    // rather than the whole thing, to the methods on the struct. Go does support nested functions,
+    // rather than the whole thing, to the methods on the struct. Go doesn't support nested functions,
     // and this program is running in "main", so I can't define them here. The source code is in
     // lib/players/players.go if you want to mess with it, and it looks like this:
 
@@ -184,5 +188,81 @@ func main() {
     somePlayer.IntroduceSelf()
     // function that returns a string
     fmt.Println(somePlayer.GetName())
+
+    /* Interfaces */
+
+    // Interfaces are a way to create different types that have different versions of the same behavior.
+    // For instance, consider a dog, cat, and a duck. All of them make noise, but they all do so differently.
+    // We can create an interface that animals make noise, and write a fuction that does the noise specific
+    // to that animal. You can think of them all as "NoiseMakers" that have a different version of "MakeNoise"
+    // The source code is in lib/animals/animals.go and looks like this:
+
+    // make animals (they empty structs because I didn't need them to have a name or age)
+    dog := animals.Dog{}
+    cat := animals.Cat{}
+    duck := animals.Duck{}
+
+    // have them do their thing:
+    dog.MakeNoise()
+    cat.MakeNoise()
+    duck.MakeNoise()
+
+    // Why is this useful? We could just write a DogNoise(), CatNoise(), and DuckNoise() function, no?
+    // This is true, but it becomes handy when we want to iterate over a list of animals and have them
+    // make their noise. This way we dont have to have a different function for each animal in our loop.
+    // we just tell them to "MakeNoise" and the do it in their own way.
+
+    // make a list of animals
+    animalList := []animals.Animal{&dog, &cat, &duck}
+    for i := 0; i < len(animalList); i++ {
+        animalList[i].MakeNoise()
+    }
+    // notice that we pass the pointer to the address here, because the functions in the interfaces
+    // are expecting a pointer to the address of the struct, not the struct itself.
+    // The source code is in lib/animals/animals.go and looks like this:
+
+    /*
+
+    package animals
+
+    import (
+        "fmt"
+    )
+
+    type Animal interface {
+        MakeNoise()
+    }
+
+
+    type Dog struct {}
+
+    func (d *Dog) MakeNoise() {
+        fmt.Println("Woof!")
+    }
+
+
+    type Cat struct {}
+
+    func (c *Cat) MakeNoise() {
+        fmt.Println("Meow!")
+    }
+
+
+    type Duck struct {}
+
+    func (d *Duck) MakeNoise() {
+        fmt.Println("Quack!")
+    }
+
+    */
+
+    // We specify the structs and them make methods that take pointers and make them do
+    // whatever it is we want them to do.
+
+
+
+
+
+
 
 }
