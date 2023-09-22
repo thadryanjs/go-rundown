@@ -1,3 +1,3 @@
-module structs-methods-interfaces
+module structs-and-methods
 
 go 1.21.1
