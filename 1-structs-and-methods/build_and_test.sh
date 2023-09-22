@@ -1,0 +1,3 @@
+# go build ./...
+go build
+go run .

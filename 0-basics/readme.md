@@ -1,8 +1,3 @@
-
 This is an irresponsibly fast introduction to Go that github copilot and I are teaching myself.
 
-Note:
-
-To create a module:
-
-go mod init <name>`
+I used `go mod init basics` to start and went from there.
