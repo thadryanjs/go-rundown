@@ -72,6 +72,34 @@ func main() {
     // This is a test to make sure I wrote and imported the functions module correctly
     fmt.Println(functions.Greet(testName))
 
+    /* Conditionals */
+
+    // These are all pretty predictable
+
+    number := 5
+    if number > 5 {
+        fmt.Println("The number is greater than 5")
+    } else if number < 5 {
+        fmt.Println("The number is less than 5")
+    } else {
+        fmt.Println("The number is 5")
+    }
+
+    // Go also has switch statement, which can be cleaner than if/else statements
+    // when you have a lot of conditions. You provide a default case, which is like
+    // the 'else' in an if/else statement.
+
+    // I find these very nice and read them as "in case of, x, do this", etc
+
+    switch number {
+        case 5:
+            fmt.Println("The number is 5")
+        case 6:
+            fmt.Println("The number is 6")
+        default:
+            fmt.Println("The number is neither 5 nor 6")
+    }
+
 
     /* Arrays & Slices */
 
@@ -101,13 +129,47 @@ func main() {
     // I rememver this as "append to list, this item" because I'm used to Python
     // where append is a method of the array, ie, array.append("item")
 
-    /* Go uses methods on types instead of classes with methods, but before we do that let's review pointers because I don't use them often enough to remember how they work all the time. Essentially the pointer refers to the memory address of the variable, not the value of it. It's sometimes called a "reference" because it refers to the variable. I remeber this by thinking of the variable as a house and the pointer as the address of that house. If you only know the address of the house, you can get to it, but don't have access to the contents without looking it up. This is called "dereferencing" the pointer because it's not just a reference anymore, it's the actual value.
 
-    We use the & operator to get the address of a variable and the * operator to dereference it.
+    /* Maps */
 
-    It's sometimes put as & "points" to the variable. I think of it as a windy arrow to remember it.
+    // Maps/hashs/dictionary structures are like are called maps in go and behave
+    // in predictable way. Note you need to specify the type of the key and the value.
 
-    */
+    // declare a map of type string to string
+    namesMap := map[string]string{
+        "Kerry": "Bishe",
+        "Lee": "Pace",
+        "Mackenzie": "Davis",
+    }
+
+    // look up a value in the map
+    fmt.println(namesMap["Kerry"])
+
+    // add a value to the map
+    namesMap["Scoot"] = "McNairy"
+    fmt.println(namesMap["Scoot"])
+
+    // delete a value from the map
+    delete(namesMap, "Scoot")
+    fmt.Println(namesMap["Scoot"])
+
+
+    /* Pointers for people in a hurry */
+
+    // This is a hasty overview of pointers because we need them, not an in-depth explanation.
+
+    // for a better explanation of pointers: https://dev.to/ottonicasio/explain-c-pointers-like-im-five-36m8
+    // Copilot suggested this video: https://www.youtube.com/watch?v=CF9S4QZuV30 when I was writing about
+
+    // Essentially pointer refers to the memory address of the variable, not the value of the variable.
+    // I think of this as the address of that house. If you only know the address of the house, you can
+    // get to it, but don't have access to the contents without looking it up.
+
+    // We use the & operator to get the address of a variable and the * operator to it.
+
+    // It's sometimes put as & "points" to the variable. I think of it as a windy arrow to remember it.
+
+    // poiners
 
     // create a variable
     x := 5
