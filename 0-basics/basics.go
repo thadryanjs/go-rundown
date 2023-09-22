@@ -4,6 +4,7 @@ package main
 
 import (
     "fmt"
+    "strings"
     // importing local modules from this directory
     "basics/lib/submod1"
     "basics/lib/submod2"
@@ -40,6 +41,7 @@ end here -> */
 func main() {
 
     /* variables and printing, etc. */
+    fmt.Println("\n/* variables and printing, etc.")
 
     // In keeping with tradition
     fmt.Println("Hello, World!")
@@ -72,7 +74,9 @@ func main() {
     // This is a test to make sure I wrote and imported the functions module correctly
     fmt.Println(functions.Greet(testName))
 
+
     /* Conditionals */
+    fmt.Println("\n/* Conditionals")
 
     // These are all pretty predictable
 
@@ -89,7 +93,7 @@ func main() {
     // when you have a lot of conditions. You provide a default case, which is like
     // the 'else' in an if/else statement.
 
-    // I find these very nice and read them as "in case of, x, do this", etc
+    // I find these very nice and read them as "in case of, x, do this",
 
     switch number {
         case 5:
@@ -101,7 +105,46 @@ func main() {
     }
 
 
+    /* Manipulating strings */
+    fmt.Println("\n/* Manipulating strings")
+
+    // Strings are immutable in Go, so you can't change them once they are created.
+    // You make new strings based on the old ones.
+
+    myName := "Thadryan"
+
+    // How long is the string?
+    fmt.Println(len(myName))
+
+    // To iterate over a string, you can use a for loop in the stule of C, C++, Java, etc.
+    for i := 0; i < len(myName); i++ {
+        fmt.Println(string(myName[i]))
+    }
+
+    // Indexing contains some suprises for those used to Python, etc:
+    // You will get the byte value of the character, not the character itself
+    fmt.Println(myName[0])
+    // to get the character, you need to cast it to a string
+    fmt.Println("First letter is:", string(myName[0]))
+    // You can also use a different print function that will do this for you
+    fmt.Println("First letter is:", fmt.Sprintf("%c", myName[0]))
+
+    // Make the string all uppercase
+    fmt.Println(strings.ToUpper(myName))
+    // Make it lowercase
+    fmt.Println(strings.ToLower(myName))
+    // Replace a substring
+    fmt.Println(strings.Replace(myName, "y", "i", 1))
+
+    // The 1 at the end of the replace function is the number of times to replace.
+    // If you want to replace all instances, you can use -1.
+    fmt.Println(strings.Replace(myName, "a", "!", -1))
+    // This is a little confusing - you'd expect something all=True
+    // Kind of obnoxious, but there is probably some performance reason for it or something
+
+
     /* Arrays & Slices */
+    fmt.Println("\n/* Arrays & Slices")
 
     // An array of type string. Note the you do need to specify the size and it can't grow
     names := [3]string{"Marty", "Doc", "Einstein"}
@@ -131,6 +174,7 @@ func main() {
 
 
     /* Maps */
+    fmt.Println("\n/* Maps")
 
     // Maps/hashs/dictionary structures are like are called maps in go and behave
     // in predictable way. Note you need to specify the type of the key and the value.
@@ -143,11 +187,11 @@ func main() {
     }
 
     // look up a value in the map
-    fmt.println(namesMap["Kerry"])
+    fmt.Println(namesMap["Kerry"])
 
     // add a value to the map
     namesMap["Scoot"] = "McNairy"
-    fmt.println(namesMap["Scoot"])
+    fmt.Println(namesMap["Scoot"])
 
     // delete a value from the map
     delete(namesMap, "Scoot")
