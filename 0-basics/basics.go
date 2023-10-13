@@ -1,6 +1,6 @@
 package main
-
 // ^ we need to specify the package name at the top of the file
+
 
 import (
     "fmt"
@@ -19,23 +19,21 @@ import "basics/lib/submod1"
 import "basics/lib/submod2"
 ```
 
+
+
 ...but it's considered good form to use the other way.
 
 Notice that we don't need a , on each line, which is nice. This makes it easier to
 comment out lines when testing.
 */
 
-
 // As you may have noticed, single-line comments are like this.
-
 // multiline comments are like this:
-
 /* <- start here
 
 muiltiline comments!
 
 end here -> */
-
 
 // The main function is where the program starts
 func main() {
@@ -57,7 +55,6 @@ func main() {
     I will probably get used to it.
     */
 
-    // Delcare a variable
     testName := "Marty McFly"
 
     /* The "walrus" operator is := and it is used to declare and assign
@@ -74,7 +71,6 @@ func main() {
     // This is a test to make sure I wrote and imported the functions module correctly
     fmt.Println(functions.Greet(testName))
 
-
     /* Conditionals */
     fmt.Println("\n/* Conditionals")
 
@@ -88,6 +84,7 @@ func main() {
     } else {
         fmt.Println("The number is 5")
     }
+
 
     // Go also has switch statement, which can be cleaner than if/else statements
     // when you have a lot of conditions. You provide a default case, which is like
@@ -108,6 +105,20 @@ func main() {
     /* Manipulating strings */
     fmt.Println("\n/* Manipulating strings")
 
+
+    fmt.Println("Hello, World!")
+
+    // make a list of names
+    namesList := []string{"Marty", "Doc", "Einstein"}
+
+    // iterate over the list and call the function on each name
+    for i := 0; i < len(namesList); i++ {
+        fmt.Println(functions.Greet(namesList[i]))
+    }
+
+    // print that we're done
+    fmt.Println("Done!")
+
     // Strings are immutable in Go, so you can't change them once they are created.
     // You make new strings based on the old ones.
 
@@ -120,6 +131,7 @@ func main() {
     for i := 0; i < len(myName); i++ {
         fmt.Println(string(myName[i]))
     }
+
 
     // Indexing contains some suprises for those used to Python, etc:
     // You will get the byte value of the character, not the character itself
@@ -232,4 +244,7 @@ func main() {
 
     // print the value of x to see it's differnt
     fmt.Println(x)
+
+    fmt.Println("\n/* Structs")
+
 }
