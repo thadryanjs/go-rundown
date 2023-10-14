@@ -102,7 +102,7 @@ func main() {
     }
 
 
-    /* Manipulating strings */
+    /* Manipulating strings and bytes */
     fmt.Println("\n/* Manipulating strings")
 
 
@@ -119,17 +119,22 @@ func main() {
     // print that we're done
     fmt.Println("Done!")
 
-    // Strings are immutable in Go, so you can't change them once they are created.
-    // You make new strings based on the old ones.
-
+    // Strings are immutable in Go, so you can't change them once
+    // they are created. You make new strings based on the old ones.
     myName := "Thadryan"
 
     // How long is the string?
     fmt.Println(len(myName))
 
-    // To iterate over a string, you can use a for loop in the stule of C, C++, Java, etc.
+    // To iterate over a string, you can use a for loop in the
+    // style of C, C++, Java, etc.
     for i := 0; i < len(myName); i++ {
         fmt.Println(string(myName[i]))
+    }
+
+    // You can also enumerate over the string:
+    for index, letter := range myName {
+        fmt.Println(index, string(letter))
     }
 
 
@@ -154,11 +159,18 @@ func main() {
     // This is a little confusing - you'd expect something all=True
     // Kind of obnoxious, but there is probably some performance reason for it or something
 
+    // by the way, there is no "char" in Go, there are bytes
+    var char byte = 'a'
+    // note the Printf
+    fmt.Printf("I am like a char %c\n", char)
+    // a string is a sequence of bytes
+
 
     /* Arrays & Slices */
     fmt.Println("\n/* Arrays & Slices")
 
-    // An array of type string. Note the you do need to specify the size and it can't grow
+    // An array of type string. Note the you do need to specify the size
+    // and it can't grow
     names := [3]string{"Marty", "Doc", "Einstein"}
 
     // for loops look like a cleaner version of the idiom used in C, C++, and Java, etc.
@@ -168,10 +180,11 @@ func main() {
         fmt.Println(functions.Greet(names[i]))
     }
 
-    // If you haven't seen something like this before, it's making a variable i, setting it to 0,
-    // comparing it to the length of the array, comparing it to the length of the array, and incrementing
-    // that variable by 1 each time the loop runs (this is the i++ part). When i is not lower than the
-    // length of the array, the loop stops.
+    // If you haven't seen something like this before, it's making a variable i,
+    // setting it to 0, comparing it to the length of the array, comparing it to the
+    // length of the array, and incrementing that variable by 1 each time the loop
+    // runs (this is the i++ part). When i is not lower than the length of the array,
+    // the loop stops.
 
     // slices are like arrays, but you don't need to specify the size and they can grow
     dynamicList := []string{"Here", "There", "Everywhere"}
@@ -244,7 +257,5 @@ func main() {
 
     // print the value of x to see it's differnt
     fmt.Println(x)
-
-    fmt.Println("\n/* Structs")
 
 }

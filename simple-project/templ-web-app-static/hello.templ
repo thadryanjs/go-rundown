@@ -1,0 +1,29 @@
+package main
+
+templ homePage() {
+    <div> Ye old list of pages is for big fun </div>
+        <ul>
+            <li> <a href="/page1"> Page 1 </a> </li>
+            <li> <a href="/page2"> Page 2 </a> </li>
+            <li> <a href="/page3"> Page 3 </a> </li>
+            <li> <a href="/page4"> Page 4 </a> </li>
+        </ul>
+}
+
+templ page1(content string) {
+    <div> { content } </div>
+
+}
+
+templ page2(content string) {
+    <div> { content } </div>
+    <div> "What's new on page 2?" </div>
+}
+
+templ page3(content string) {
+    <div> { content }</div>
+}
+
+templ page4(text string) {
+    <button class="button">{ text }</button>
+}

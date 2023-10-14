@@ -1,0 +1,11 @@
+package main
+
+import "time"
+
+templ textComponent(text string) {
+    <div>{ text }</div>
+}
+
+templ timeComponent(d time.Time) {
+    <div>{ d.String() }</div>
+}
