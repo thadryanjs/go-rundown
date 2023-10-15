@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import(
+    "time"
+    "strconv"
+)
 
 templ textComponent(text string) {
     <div>{ text }</div>
@@ -8,4 +11,20 @@ templ textComponent(text string) {
 
 templ timeComponent(d time.Time) {
     <div>{ d.String() }</div>
+}
+
+templ counts(global int) {
+    <div> Count: { strconv.Itoa(global) }</div>
+}
+
+templ form() {
+    <form action="/" method="POST">
+        <div><button type="submit" name="increase" value="global"> Increase </button></div>
+        <div><button type="submit" name="decrease" value="user"> Decrease </button></div>
+    </form>
+}
+
+templ page(global int) {
+    @counts(global)
+    @form()
 }
